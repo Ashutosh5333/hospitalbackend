@@ -1,5 +1,7 @@
 
 const express = require("express")
+const { connection } = require("./Config/db")
+const { UserRouter } = require("./Routes/user")
 
 const app = express()
 
@@ -12,7 +14,17 @@ const app = express()
    })
 
 
+    app.use(UserRouter)
 
-   app.listen(8000 , (req,res) => {
+
+   app.listen(8000 , async (req,res) => {
+       try{
+         await connection
+         console.log("connected to database")
+       }
+       catch(err){
+        console.log("something went wrong")
+        console.log(err)
+       }
       console.log("listen on port 8000")
    })
