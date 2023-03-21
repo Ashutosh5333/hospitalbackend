@@ -1,20 +1,30 @@
 
 const express = require("express")
 const { connection } = require("./Config/db")
+const { Authenticate } = require("./middleware/Authenticate")
+const { DoctorRouter } = require("./Routes/Docter")
 const { UserRouter } = require("./Routes/user")
 
 const app = express()
+app.use(express.json())
 
-  app.use(express.json())
 
  
-
    app.get("/" ,(req,res) =>{
      res.send("welcome Home")
    })
 
 
     app.use(UserRouter)
+    app.use(DoctorRouter)
+    app.use(Authenticate)
+    
+
+   app.get("/dash" ,(req,res) =>{
+    res.send("welcome Home")
+  })
+
+
 
 
    app.listen(8000 , async (req,res) => {
