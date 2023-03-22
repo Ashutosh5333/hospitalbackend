@@ -32,6 +32,19 @@ const { DoctorModel } = require("../models/Doctors.model")
               res.send("somethind went wrong")
             } 
     })
+
+    
+   DoctorRouter.get("/doctor/:Id" , async (req,res) =>{
+    const Id = req.params.Id
+    try{
+      const Doctordata = await DoctorModel.findById({_id:Id})
+      res.send(Doctordata)
+    }
+    catch(err){
+     console.log(err)
+    }
+})
+
     DoctorRouter.delete("/doctor/:Id" ,async(req,res) =>{
       const Id = req.params.Id
       try{
