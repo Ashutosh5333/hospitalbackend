@@ -5,6 +5,7 @@ const { connection } = require("./Config/db")
 const { Authenticate } = require("./middleware/Authenticate")
 const { DoctorRouter } = require("./Routes/Docter")
 const { UserRouter } = require("./Routes/user")
+const { RoomRouter } = require("./Routes/Room")
 
 
 const app = express()
@@ -22,6 +23,7 @@ app.use(express.json())
 
     app.use(UserRouter)
     app.use(DoctorRouter)
+    app.use(RoomRouter)
     app.use(Authenticate)
     
 
