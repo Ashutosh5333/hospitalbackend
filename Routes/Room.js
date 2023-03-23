@@ -39,7 +39,7 @@ const { SpecilityModel } = require("../models/Speciltiy.model")
 })
 
 
-     RoomRouter.post("/specilty" , async (req,res) =>{
+     RoomRouter.get("/specilty" , async (req,res) =>{
         try{
           const Data = await SpecilityModel.find()
           res.send(Data)
