@@ -34,12 +34,13 @@ const UserRouter = express.Router()
            const {email,password,name} = req.body;
           
           const User = await UserModel.find({email})
-             const hasedpassword = User[0].password
-                if(User.length>0){
+          //   console.log(User)
+          if(User.length>0){
+                   const hasedpassword = User[0].password
                   await bcrypt.compare(password, hasedpassword, function(err, result) {
                           if(result){
                             var token = jwt.sign({ foo: 'bar' }, process.env.key);
-                              res.send({"msg":"user logged in Sucessfully", "token":token})
+                              res.send({"msg":"user logged in Sucessfully", "token":token, displayname:User[0].name})
                           }
                           else{
                             res.send({"msg":"please check password"})
@@ -52,5 +53,6 @@ const UserRouter = express.Router()
 
      })
   
+   
   
     module.exports={UserRouter}
