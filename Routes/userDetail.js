@@ -61,6 +61,15 @@ UserDetailRouter.delete("/userdetail/:Id" ,async(req,res) =>{
       } 
 })
 
+    // ---------- Cart ----------- //
+  
+
+
+
+
+
+
+
    module.exports={
     UserDetailRouter
    }

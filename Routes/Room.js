@@ -38,6 +38,11 @@ const { SpecilityModel } = require("../models/Speciltiy.model")
       } 
 })
 
+        
+
+
+
+//  ---------------- Specility ----------- //
 
      RoomRouter.get("/specilty" , async (req,res) =>{
         try{

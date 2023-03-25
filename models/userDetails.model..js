@@ -7,6 +7,8 @@ const mongoose = require("mongoose")
         pic:String,
         PhNumber:String,
         Address:String,
+        gender:String,
+        Age:String,
         userId:String,
  })
 
