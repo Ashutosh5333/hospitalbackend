@@ -6,6 +6,7 @@ const { Authenticate } = require("./middleware/Authenticate")
 const { DoctorRouter } = require("./Routes/Docter")
 const { UserRouter } = require("./Routes/user")
 const { RoomRouter } = require("./Routes/Room")
+const { UserDetailRouter } = require("./Routes/userDetail")
 
 
 const app = express()
@@ -20,11 +21,12 @@ app.use(express.json())
      res.send("welcome Home")
    })
 
-
     app.use(UserRouter)
     app.use(DoctorRouter)
     app.use(RoomRouter)
+
     app.use(Authenticate)
+    app.use(UserDetailRouter)
     
 
    app.get("/dash" ,(req,res) =>{

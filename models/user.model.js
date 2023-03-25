@@ -8,7 +8,6 @@ const mongoose = require("mongoose")
         password:String,
         PhNumber:String,
         Address:String
-
  })
 
 

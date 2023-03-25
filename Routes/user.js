@@ -31,7 +31,7 @@ const UserRouter = express.Router()
 
      
      UserRouter.post("/login", async (req,res) => {
-           const {email,password,name} = req.body;
+           const {email,password,_id,name} = req.body;
           
           const User = await UserModel.find({email})
           //   console.log(User)
@@ -39,7 +39,7 @@ const UserRouter = express.Router()
                    const hasedpassword = User[0].password
                   await bcrypt.compare(password, hasedpassword, function(err, result) {
                           if(result){
-                            var token = jwt.sign({ foo: 'bar' }, process.env.key);
+                            var token = jwt.sign({ userId:User[0]._id}, process.env.key);
                               res.send({"msg":"user logged in Sucessfully", "token":token, displayname:User[0].name})
                           }
                           else{

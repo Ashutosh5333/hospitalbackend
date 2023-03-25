@@ -7,7 +7,10 @@ const jwt = require("jsonwebtoken")
             if(token){
                  const decoded = jwt.verify(token,process.env.key)
                     if(decoded){
+                         const userId= decoded.userId
+                         req.body.userId=userId
                         console.log(decoded)
+                        console.log("authenticate", userId)
                         next()
                     }
                     else{
